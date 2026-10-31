@@ -3,114 +3,543 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GALON MIX — aplikasi audio mixer untuk Windows 64-bit. Unduh gratis dan dukung pengembang melalui donasi QRIS.">
-  <title>GALON MIX — Audio Mixer</title>
-  <style>
-    :root{--bg:#090b0e;--panel:#151a20;--panel2:#1d242c;--line:#303943;--text:#f4f6f8;--muted:#aab4bf;--green:#45d483;--amber:#f3b63f}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 50% -15%,#26313a 0,transparent 48%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
-    .wrap{width:min(1120px,92%);margin:auto}
-    header{padding:22px 0;border-bottom:1px solid #ffffff18}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{font-weight:900;letter-spacing:2px;font-size:22px}.brand span{color:var(--green)}
-    .tag{font-size:11px;letter-spacing:1.4px;color:var(--green);border:1px solid #45d48366;padding:8px 11px;border-radius:4px}
-    .hero{padding:72px 0 48px;display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
-    .eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-    h1{font-size:clamp(42px,7vw,76px);line-height:.98;margin:16px 0;letter-spacing:-2.5px}
-    h1 span{color:var(--green)} .lead{font-size:17px;line-height:1.7;color:var(--muted);max-width:570px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:6px;text-decoration:none;font-weight:800;transition:.2s}
-    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-    .primary{background:var(--green);color:#07130c}.secondary{border:1px solid var(--line);color:var(--text);background:#ffffff08}
-    .mixer{background:linear-gradient(145deg,#202830,#0f1318);border:1px solid #3b4651;border-radius:12px;padding:18px;box-shadow:0 24px 70px #0009;position:relative;overflow:hidden}
-    .mixer:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 38px,#ffffff05 39px 40px);pointer-events:none}
-    .mixer-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:16px;font-size:12px;color:var(--muted);letter-spacing:1px}
-    .channels{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-    .channel{background:#11161b;border:1px solid #303a44;border-radius:5px;padding:10px 6px;text-align:center;min-height:220px}
-    .chname{font-size:9px;color:var(--muted);letter-spacing:.7px}
-    .knob{width:29px;height:29px;border-radius:50%;margin:13px auto 7px;background:conic-gradient(var(--green) 0 230deg,#4b555f 230deg 360deg);position:relative;box-shadow:0 2px 7px #000}
-    .knob:after{content:"";position:absolute;width:4px;height:9px;background:#fff;left:13px;top:3px;border-radius:2px}
-    .meter{height:48px;width:7px;background:#28313a;margin:9px auto;border-radius:5px;position:relative;overflow:hidden}
-    .meter:after{content:"";position:absolute;bottom:0;left:0;right:0;height:72%;background:linear-gradient(to top,#2bca75 0 65%,#e7c94b 65% 85%,#e45d52 85%)}
-    .fader{height:62px;width:4px;background:#59636e;margin:10px auto;position:relative;border-radius:3px}
-    .fader:after{content:"";position:absolute;left:-7px;top:24px;width:18px;height:13px;border-radius:3px;background:linear-gradient(#f1f3f4,#9da7af);box-shadow:0 2px 4px #000}
-    .channel small{font-size:8px;color:#77838f}
-    section{padding:42px 0}
-    .section-title{font-size:27px;margin:0 0 12px}.sub{color:var(--muted);line-height:1.65;margin:0 0 24px}
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .feature{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:8px}
-    .feature b{display:block;margin:12px 0 7px}.feature p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
-    .icon{font-size:24px;color:var(--green)}
-    .download{background:linear-gradient(120deg,#17251e,#151a20);border:1px solid #315342;border-radius:10px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .download p{color:var(--muted);margin-bottom:0;line-height:1.6}
-    .donate{display:grid;grid-template-columns:1fr 260px;gap:28px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:28px}
-    .qr{background:#fff;color:#111;border-radius:8px;padding:16px;text-align:center}
-    .qr img{display:block;width:100%;max-width:210px;aspect-ratio:1;object-fit:contain;margin:auto;background:#f0f0f0}
-    .qr p{font-size:12px;color:#555;margin:10px 0 0}
-    .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}
-    footer{border-top:1px solid #ffffff18;padding:25px 0;color:#84909b;font-size:12px;text-align:center;margin-top:30px}
+  <meta name="description" content="GALON MIX - Aplikasi audio mixer Windows 64-bit. Download gratis dan dukung pengembangan melalui QRIS DANA.">
+  <meta name="theme-color" content="#090b0e">
+  <title>GALON MIX — Digital Audio Mixer</title>
 
-    .app-shot{background:#10151a;border:1px solid #3b4651;border-radius:10px;padding:10px;box-shadow:0 24px 70px #0009}
-    .app-shot img{display:block;width:100%;height:auto;border-radius:5px}
-    .shot-caption{font-size:11px;color:var(--muted);padding:9px 3px 1px;text-align:center}
-    .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    .gallery figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px}
-    .gallery img{display:block;width:100%;height:auto;border-radius:5px}
-    .gallery figcaption{color:var(--muted);font-size:13px;padding:10px 3px 3px}
-    @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:48px}.features{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.download{align-items:flex-start;flex-direction:column}.donate{grid-template-columns:1fr}.qr{max-width:260px}.channels{gap:4px}.channel{padding:8px 2px}}
+  <style>
+    :root {
+      --bg: #090b0e;
+      --panel: #151a20;
+      --panel2: #1d242c;
+      --line: #303943;
+      --text: #f4f6f8;
+      --muted: #aab4bf;
+      --green: #45d483;
+      --amber: #f3b63f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 50% -15%, #26313a 0, transparent 48%), var(--bg);
+      color: var(--text);
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+    }
+
+    a { text-decoration: none; }
+
+    .wrap {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid #ffffff18;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 22px;
+    }
+
+    .brand span { color: var(--green); }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      color: var(--green);
+      border: 1px solid #45d48366;
+      padding: 8px 11px;
+      border-radius: 4px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .98;
+      margin: 16px 0;
+      letter-spacing: -2.5px;
+    }
+
+    h1 span { color: var(--green); }
+
+    .lead {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 570px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .primary {
+      background: var(--green);
+      color: #07130c;
+    }
+
+    .secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #ffffff08;
+    }
+
+    .mixer {
+      background: linear-gradient(145deg, #202830, #0f1318);
+      border: 1px solid #3b4651;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 24px 70px #0009;
+    }
+
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .channel {
+      background: #11161b;
+      border: 1px solid #303a44;
+      border-radius: 5px;
+      padding: 10px 6px;
+      text-align: center;
+      min-height: 220px;
+    }
+
+    .chname {
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .knob {
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      margin: 13px auto 7px;
+      background: conic-gradient(var(--green) 0 230deg, #4b555f 230deg 360deg);
+    }
+
+    .meter {
+      height: 48px;
+      width: 7px;
+      background: #28313a;
+      margin: 9px auto;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meter:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72%;
+      background: linear-gradient(to top, #2bca75 0 65%, #e7c94b 65% 85%, #e45d52 85%);
+    }
+
+    .fader {
+      height: 62px;
+      width: 4px;
+      background: #59636e;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    .fader:after {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 24px;
+      width: 18px;
+      height: 13px;
+      border-radius: 3px;
+      background: linear-gradient(#f1f3f4, #9da7af);
+    }
+
+    section { padding: 42px 0; }
+
+    .section-title {
+      font-size: 27px;
+      margin: 0 0 12px;
+    }
+
+    .sub {
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0 0 24px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 22px;
+      border-radius: 8px;
+    }
+
+    .feature b {
+      display: block;
+      margin: 12px 0 7px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .icon {
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    .download {
+      background: linear-gradient(120deg, #17251e, #151a20);
+      border: 1px solid #315342;
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .download p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .donate {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 28px;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    .qr {
+      background: #fff;
+      color: #111;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .qr img {
+      display: block;
+      width: 100%;
+      max-width: 240px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      margin: auto;
+      background: #fff;
+    }
+
+    .qr b {
+      display: block;
+      margin-top: 12px;
+    }
+
+    .qr p {
+      font-size: 12px;
+      color: #555;
+      margin: 10px 0 0;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .app-shot {
+      background: #10151a;
+      border: 1px solid #3b4651;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 24px 70px #0009;
+    }
+
+    .app-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .shot-caption {
+      font-size: 11px;
+      color: var(--muted);
+      padding: 9px 3px 1px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px;
+    }
+
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .gallery figcaption {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 3px 3px;
+    }
+
+    footer {
+      border-top: 1px solid #ffffff18;
+      padding: 25px 0;
+      color: #84909b;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    @media(max-width:760px) {
+      .hero { grid-template-columns: 1fr; padding-top: 48px; }
+      .features { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .download { align-items: flex-start; flex-direction: column; }
+      .donate { grid-template-columns: 1fr; }
+      .qr { max-width: 280px; margin: auto; }
+      .channels { gap: 4px; }
+      .channel { padding: 8px 2px; }
+      .tag { font-size: 9px; }
+    }
   </style>
 </head>
+
 <body>
-<header><div class="wrap nav"><div class="brand">GALON <span>MIX</span></div><div class="tag">WINDOWS 64-BIT · FREE DOWNLOAD</div></div></header>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">GALON <span>MIX</span></div>
+    <div class="tag">WINDOWS 64-BIT · FREE DOWNLOAD</div>
+  </div>
+</header>
+
 <main>
+
   <div class="wrap hero">
     <div>
       <div class="eyebrow">Digital Audio Mixer</div>
       <h1>Mix your sound.<br><span>Your way.</span></h1>
-      <p class="lead">Kenalkan GALON MIX, aplikasi audio mixer untuk Windows 64-bit. Kelola audio melalui mixer digital dengan dukungan pengaturan perangkat ASIO, pemindaian plugin VST3, dan tampilan RTA Analyzer.</p>
+
+      <p class="lead">
+        Kenalkan GALON MIX, aplikasi audio mixer untuk Windows 64-bit.
+        Kelola audio melalui mixer digital dengan dukungan pengaturan
+        perangkat ASIO, pemindaian plugin VST3, dan tampilan RTA Analyzer.
+      </p>
+
       <div class="actions">
-        <a class="btn primary" href="https://github.com/USERNAME/REPOSITORY/releases/latest" target="_blank" rel="noopener">⬇ Download untuk Windows</a>
-        <a class="btn secondary" href="#donasi">♡ Donasi QRIS</a>
+        <a class="btn primary"
+           href="https://github.com/shotonoppo-hue/GalonMix/releases"
+           target="_blank" rel="noopener">
+          ⬇ Download untuk Windows
+        </a>
+
+        <a class="btn secondary" href="#donasi">
+          ♡ Donasi QRIS
+        </a>
       </div>
+
       <p class="note">Gratis diunduh. Donasi sepenuhnya sukarela.</p>
     </div>
+
     <div class="app-shot">
-      <img src="images/galon-mix-main.png" alt="Tampilan utama aplikasi GALON MIX">
+      <img src="images/galon-mix-main.png"
+           alt="Tampilan utama aplikasi GALON MIX">
       <div class="shot-caption">Tampilan aplikasi GALON MIX</div>
     </div>
   </div>
+
   <section class="wrap">
     <h2 class="section-title">Fitur GALON MIX</h2>
-    <p class="sub">Informasi berikut adalah contoh konten. Sesuaikan dengan fitur yang benar-benar tersedia di versi aplikasi Anda.</p>
+    <p class="sub">
+      Aplikasi audio mixer digital untuk Windows 64-bit.
+    </p>
+
     <div class="features">
-      <div class="feature"><div class="icon">🎚</div><b>Kontrol Mixer</b><p>Antarmuka bergaya mixer digital dengan channel dan kontrol audio.</p></div>
-      <div class="feature"><div class="icon">🎧</div><b>Audio Windows</b><p>Dibuat untuk komputer Windows 64-bit. Pastikan perangkat audio sesuai dengan konfigurasi aplikasi.</p></div>
-      <div class="feature"><div class="icon">⚙</div><b>Terus Dikembangkan</b><p>Halaman ini dapat diperbarui setiap kali Anda merilis versi GALON MIX yang baru.</p></div>
+      <div class="feature">
+        <div class="icon">🎚</div>
+        <b>Kontrol Mixer</b>
+        <p>Antarmuka bergaya mixer digital dengan channel dan kontrol audio.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🎧</div>
+        <b>Audio Windows</b>
+        <p>Dibuat untuk komputer Windows 64-bit dengan konfigurasi perangkat audio.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">⚙</div>
+        <b>Terus Dikembangkan</b>
+        <p>Pengembangan fitur dan peningkatan aplikasi GALON MIX.</p>
+      </div>
     </div>
   </section>
+
   <section class="wrap" id="screenshots">
     <h2 class="section-title">Tampilan GALON MIX</h2>
-    <p class="sub">Beberapa tampilan aplikasi asli, termasuk pengaturan perangkat audio, pemindaian plugin VST3, dan RTA Analyzer.</p>
+    <p class="sub">
+      Beberapa tampilan aplikasi GALON MIX.
+    </p>
+
     <div class="gallery">
-      <figure><img src="images/galon-mix-vst3-scan.jpg" alt="Pemindaian plugin VST3"><figcaption>Pemindaian folder plugin VST3 dan daftar plugin yang ditemukan.</figcaption></figure>
-      <figure><img src="images/galon-mix-audio-setup.jpg" alt="Pengaturan perangkat audio"><figcaption>Pengaturan driver ASIO, input dan output, sample rate, serta buffer audio.</figcaption></figure>
-      <figure><img src="images/galon-mix-rta-analyzer.jpg" alt="RTA Analyzer"><figcaption>Tampilan RTA Analyzer dan channel mixer.</figcaption></figure>
+      <figure>
+        <img src="images/galon-mix-vst3-scan.jpg"
+             alt="Pemindaian plugin VST3">
+        <figcaption>Pemindaian plugin VST3.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/galon-mix-audio-setup.jpg"
+             alt="Pengaturan perangkat audio">
+        <figcaption>Pengaturan perangkat audio dan ASIO.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/galon-mix-rta-analyzer.jpg"
+             alt="RTA Analyzer">
+        <figcaption>Tampilan RTA Analyzer.</figcaption>
+      </figure>
     </div>
   </section>
+
   <section class="wrap" id="download">
     <div class="download">
-      <div><div class="eyebrow">Latest release</div><h2 class="section-title">Download GALON MIX</h2><p>Untuk Windows 64-bit. Unduh file ZIP dari halaman rilis GitHub.</p></div>
-      <a class="btn primary" href="https://github.com/USERNAME/REPOSITORY/releases/latest" target="_blank" rel="noopener">Download .ZIP ↗</a>
+      <div>
+        <div class="eyebrow">Latest release</div>
+        <h2 class="section-title">Download GALON MIX</h2>
+        <p>Unduh aplikasi GALON MIX untuk Windows 64-bit melalui GitHub.</p>
+      </div>
+
+      <a class="btn primary"
+         href="https://github.com/shotonoppo-hue/GalonMix/releases"
+         target="_blank" rel="noopener">
+        Download .ZIP ↗
+      </a>
     </div>
-    <p class="note">Sebelum dipublikasikan, ganti kedua tautan GitHub di file index.html dengan alamat repository dan halaman Releases milik Anda.</p>
   </section>
+
   <section class="wrap" id="donasi">
     <div class="donate">
-      <div><div class="eyebrow">Support development</div><h2 class="section-title">Dukung GALON MIX</h2><p class="sub">Jika aplikasi ini bermanfaat, Anda dapat mendukung pengembang melalui QRIS. Donasi bersifat sukarela dan membantu pengembangan fitur berikutnya.</p><p class="note">Ganti gambar qris-placeholder.svg dengan gambar QRIS resmi milik Anda. Jangan gunakan QRIS orang lain.</p></div>
-      <div class="qr"><img src="qris-placeholder.svg" alt="Tempat gambar QRIS donasi"><b>SCAN QRIS UNTUK DONASI</b><p>Terima kasih atas dukungan Anda!</p></div>
+
+      <div>
+        <div class="eyebrow">Support development</div>
+
+        <h2 class="section-title">Dukung GALON MIX</h2>
+
+        <p class="sub">
+          Jika aplikasi ini bermanfaat, Anda dapat mendukung
+          pengembang melalui QRIS DANA.
+          Donasi sepenuhnya sukarela dan membantu pengembangan
+          fitur GALON MIX berikutnya.
+        </p>
+
+        <p class="note">
+          Pembayaran menggunakan QRIS.
+          Scan kode menggunakan DANA atau aplikasi pembayaran
+          lain yang mendukung QRIS.
+        </p>
+      </div>
+
+      <div class="qr">
+        <img src="quris-dana.png.jpg"
+             alt="QRIS resmi donasi GALON MIX">
+
+        <b>SCAN QRIS UNTUK DONASI</b>
+
+        <p>Terima kasih atas dukungan Anda!</p>
+      </div>
+
     </div>
   </section>
+
 </main>
-<footer><div class="wrap">© 2026 GALON MIX · Dibuat untuk komunitas audio</div></footer>
+
+<footer>
+  <div class="wrap">
+    © 2026 GALON MIX · Digital Audio Mixer · Windows 64-bit
+  </div>
+</footer>
+
 </body>
 </html>
