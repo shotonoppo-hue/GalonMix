@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+<rect width="420" height="420" fill="#f1f1f1"/>
+<rect x="18" y="18" width="384" height="384" rx="12" fill="#fff" stroke="#bbb" stroke-width="3"/>
+<text x="210" y="145" font-family="Arial,sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#222">QRIS ANDA</text>
+<text x="210" y="205" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#555">Ganti gambar ini</text>
+<text x="210" y="235" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#555">dengan QRIS resmi</text>
+<text x="210" y="330" font-family="Arial,sans-serif" font-size="13" text-anchor="middle" fill="#888">GALON MIX · DONASI</text>
+</svg>
